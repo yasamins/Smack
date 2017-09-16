@@ -9,7 +9,11 @@
 import UIKit
 
 class ChannelVC: UIViewController {
-
+    
+    //outlets
+    //we need to chnage the text on the button when the user login so thats why we need the outlet
+    @IBOutlet weak var loginBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // the width of the back view when swiping
@@ -22,5 +26,9 @@ class ChannelVC: UIViewController {
         
     }
     
-
+    @IBAction func loginBtnPressed(_ sender: Any) {
+        //after pressing the login button we wanna segue to the login vc
+        performSegue(withIdentifier: TO_LOGIN, sender: nil)
+    }
+    
 }
