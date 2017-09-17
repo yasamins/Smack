@@ -13,6 +13,10 @@ class ChannelVC: UIViewController {
     //outlets
     //we need to chnage the text on the button when the user login so thats why we need the outlet
     @IBOutlet weak var loginBtn: UIButton!
+    //we use unwind so when user click on exit button on signup VC they will come all the way back to initial VC
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
