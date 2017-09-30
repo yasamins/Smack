@@ -11,7 +11,7 @@ typealias CompletionHandler = (_ Success: Bool) -> ()
 
 //URL Constants
 //THE URL IS THE DOMAIN IN HEROKU
-let BASE_URL = "https://chattychat7.herokuapp.com/"
+let BASE_URL = "https://chattychat7.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"
 
 
