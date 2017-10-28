@@ -15,6 +15,8 @@ class CreateAccountVC: UIViewController {
     @IBOutlet weak var passTxt: UITextField!
     @IBOutlet weak var userImg: UIImageView!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     //variables
     //if the user does not pick any image this is the default one
     var avatarName = "profileDefault"
@@ -23,12 +25,23 @@ class CreateAccountVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //spinner is first hidden
+        spinner.isHidden = true
 
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDataService.instance.avatarName != "" {
+            userImg.image = UIImage(named: UserDataService.instance.avatarName)
+            avatarName = UserDataService.instance.avatarName
+        }
+    }
     
     @IBAction func createAccntPressed(_ sender: Any) {
+        //we want the spinner to show right when we click on createaccbtn
+        spinner.isHidden = false
+        spinner.startAnimating()
         //creating variable for our email and pass
         guard let name = usernameTxt.text , usernameTxt.text != "" else { return }
         guard let email = emailTxt.text , emailTxt.text != "" else { return }
@@ -42,8 +55,11 @@ class CreateAccountVC: UIViewController {
                                                 if success {
                                                     AuthService.instance.createUser(name: name, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success) in
                                                         if success {
-                                                            print(UserDataService.instance.name, UserDataService.instance.avatarName)
+                                                            self.spinner.isHidden = true
+                                                            self.spinner.stopAnimating()
                                                             self.performSegue(withIdentifier: UNWIND, sender: nil)
+                                                            //after clicking on create account and after everything is successfull we gonna send this notification
+                                                            NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
                                                         }
                                                     })
                                                 }

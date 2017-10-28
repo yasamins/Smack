@@ -176,6 +176,7 @@
                     </view>
                     <connections>
                         <outlet property="loginBtn" destination="fvQ-o3-dhd" id="nIj-Gd-tRN"/>
+                        <outlet property="userImg" destination="QIc-za-Gzo" id="OSb-9y-4QW"/>
                         <segue destination="KLB-xm-pKQ" kind="show" identifier="toLogin" id="ePE-Ry-G7Z"/>
                     </connections>
                 </viewController>
@@ -456,6 +457,10 @@
                                     <action selector="pickBGColorPressed:" destination="jOv-tw-8CS" eventType="touchUpInside" id="2er-rN-9Sa"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="H8U-Hq-z8L">
+                                <rect key="frame" x="169" y="215" width="37" height="37"/>
+                                <color key="color" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -469,8 +474,10 @@
                             <constraint firstItem="jZ0-r5-10f" firstAttribute="top" secondItem="msk-Rg-Myt" secondAttribute="bottom" constant="20" id="Wuz-oL-JzK"/>
                             <constraint firstItem="izH-L3-y87" firstAttribute="centerX" secondItem="yzi-D2-MLZ" secondAttribute="centerX" id="ZDL-b2-WeT"/>
                             <constraint firstItem="XZb-Zv-Aj2" firstAttribute="centerX" secondItem="yzi-D2-MLZ" secondAttribute="centerX" id="dWP-bC-inA"/>
+                            <constraint firstItem="H8U-Hq-z8L" firstAttribute="centerY" secondItem="yzi-D2-MLZ" secondAttribute="centerY" constant="-100" id="kZs-QG-uCh"/>
                             <constraint firstItem="msk-Rg-Myt" firstAttribute="centerX" secondItem="yzi-D2-MLZ" secondAttribute="centerX" id="m3A-5k-S1d"/>
                             <constraint firstItem="vh5-4B-0j1" firstAttribute="centerX" secondItem="yzi-D2-MLZ" secondAttribute="centerX" id="n8i-Ni-Jwc"/>
+                            <constraint firstItem="H8U-Hq-z8L" firstAttribute="centerX" secondItem="yzi-D2-MLZ" secondAttribute="centerX" id="nhZ-SZ-Nhj"/>
                             <constraint firstItem="x3u-99-RIK" firstAttribute="centerX" secondItem="yzi-D2-MLZ" secondAttribute="centerX" id="nuv-Fg-wrz"/>
                             <constraint firstItem="izH-L3-y87" firstAttribute="top" secondItem="wAH-lw-1Xp" secondAttribute="top" constant="60" id="pUQ-fW-8Fl"/>
                             <constraint firstItem="32D-tj-8Yw" firstAttribute="trailing" secondItem="wAH-lw-1Xp" secondAttribute="trailing" id="vjh-fr-CrH"/>
@@ -480,6 +487,7 @@
                     <connections>
                         <outlet property="emailTxt" destination="8AQ-Hh-Rkr" id="xDd-X6-QET"/>
                         <outlet property="passTxt" destination="JRD-Xa-CWA" id="GgC-4n-MpV"/>
+                        <outlet property="spinner" destination="H8U-Hq-z8L" id="yQ9-Tz-cqR"/>
                         <outlet property="userImg" destination="msk-Rg-Myt" id="lKd-1U-Rk7"/>
                         <outlet property="usernameTxt" destination="FKv-h0-fIn" id="oK6-iA-2C1"/>
                         <segue destination="0v0-kI-8oD" kind="unwind" identifier="unwindToChannel" unwindAction="prepareForUnwindWithSegue:" id="V23-Dd-lPk"/>

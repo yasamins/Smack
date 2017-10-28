@@ -14,6 +14,8 @@ class ChannelVC: UIViewController {
     //we need to chnage the text on the button when the user login so thats why we need the outlet
     @IBOutlet weak var loginBtn: UIButton!
     //we use unwind so when user click on exit button on signup VC they will come all the way back to initial VC
+    
+    @IBOutlet weak var userImg: UIImageView!
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
         
     }
@@ -22,6 +24,8 @@ class ChannelVC: UIViewController {
         super.viewDidLoad()
         // the width of the back view when swiping
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
+        //we are listening for the notification in createaccountVC
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
 
     }
 
@@ -34,5 +38,17 @@ class ChannelVC: UIViewController {
         //after pressing the login button we wanna segue to the login vc
         performSegue(withIdentifier: TO_LOGIN, sender: nil)
     }
-    
+    //this func is gonna be called everytime we receive the notification
+    @objc func userDataDidChange(_ notif: Notification) {
+        //if the suer loggedin we gonna change the btn name and image
+        if AuthService.instance.isLoggedIn {
+            loginBtn.setTitle(UserDataService.instance.name, for: .normal)
+            userImg.image = UIImage(named:
+            UserDataService.instance.avatarName)
+        } else {
+            loginBtn.setTitle("Login", for: .normal)
+            userImg.image = UIImage(named: "menuProfileIcon")
+        }
+        
+    }
 }
