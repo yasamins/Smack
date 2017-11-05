@@ -25,6 +25,9 @@
 		53AD2FD01F973BDD001BA37F /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD2FCF1F973BDD001BA37F /* AvatarCell.swift */; };
 		53AD2FD31FA4E994001BA37F /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD2FD11FA4E994001BA37F /* ProfileVC.swift */; };
 		53AD2FD41FA4E994001BA37F /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53AD2FD21FA4E994001BA37F /* ProfileVC.xib */; };
+		53AD2FDB1FAF2FE4001BA37F /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD2FDA1FAF2FE4001BA37F /* MessageService.swift */; };
+		53AD2FDD1FAF304B001BA37F /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD2FDC1FAF304B001BA37F /* Channel.swift */; };
+		53AD2FDF1FAF8D38001BA37F /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD2FDE1FAF8D38001BA37F /* ChannelCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		53AD2FCF1F973BDD001BA37F /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 		53AD2FD11FA4E994001BA37F /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		53AD2FD21FA4E994001BA37F /* ProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileVC.xib; sourceTree = "<group>"; };
+		53AD2FDA1FAF2FE4001BA37F /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		53AD2FDC1FAF304B001BA37F /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		53AD2FDE1FAF8D38001BA37F /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		53C179B81F6D5C27007E642C /* Smack-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smack-Bridging-Header.h"; sourceTree = "<group>"; };
 		E4BD4B95FE63FC2E72658B50 /* Pods-Smack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smack/Pods-Smack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +77,7 @@
 			children = (
 				533F61251F765932000F601F /* AuthService.swift */,
 				537F9D071F8A5C620061480E /* UserDataService.swift */,
+				53AD2FDA1FAF2FE4001BA37F /* MessageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -131,6 +138,7 @@
 				537686171F6D62B500C0F5C0 /* GradientView.swift */,
 				537F9D051F7B832A0061480E /* RoundedButton.swift */,
 				53AD2FCF1F973BDD001BA37F /* AvatarCell.swift */,
+				53AD2FDE1FAF8D38001BA37F /* ChannelCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -138,6 +146,7 @@
 		53749B9F1F6D465600D27430 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				53AD2FDC1FAF304B001BA37F /* Channel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -311,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				537F9D041F76857F0061480E /* SWRevealViewController.m in Sources */,
+				53AD2FDD1FAF304B001BA37F /* Channel.swift in Sources */,
 				53AD2FCE1F8AADB5001BA37F /* AvatarPickerVC.swift in Sources */,
 				53AD2FD31FA4E994001BA37F /* ProfileVC.swift in Sources */,
 				537F9D061F7B832A0061480E /* RoundedButton.swift in Sources */,
@@ -320,6 +330,8 @@
 				5376861F1F6E499200C0F5C0 /* CreateAccountVC.swift in Sources */,
 				533F61261F765932000F601F /* AuthService.swift in Sources */,
 				5376861D1F6D8D3D00C0F5C0 /* LoginVC.swift in Sources */,
+				53AD2FDB1FAF2FE4001BA37F /* MessageService.swift in Sources */,
+				53AD2FDF1FAF8D38001BA37F /* ChannelCell.swift in Sources */,
 				53AD2FD01F973BDD001BA37F /* AvatarCell.swift in Sources */,
 				537686181F6D62B500C0F5C0 /* GradientView.swift in Sources */,
 				53749B871F6B0D3A00D27430 /* AppDelegate.swift in Sources */,

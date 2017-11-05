@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ChannelVC: UIViewController {
+class ChannelVC: UIViewController, UITableViewDelegate,
+    UITableViewDataSource {
     
     //outlets
     //we need to chnage the text on the button when the user login so thats why we need the outlet
@@ -16,12 +17,16 @@ class ChannelVC: UIViewController {
     //we use unwind so when user click on exit button on signup VC they will come all the way back to initial VC
     
     @IBOutlet weak var userImg: UIImageView!
+    
+    @IBOutlet weak var tableView: UITableView!
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         // the width of the back view when swiping
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
         //we are listening for the notification in createaccountVC
@@ -50,5 +55,22 @@ class ChannelVC: UIViewController {
             userImg.image = UIImage(named: "menuProfileIcon")
         }
         
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath:
+        IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as? ChannelCell {
+            //this channel is coming from our MessageSerbice array of channels
+            let channel = MessageService.instance.channels[indexPath.row]
+            cell.configureCell(channel: channel)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessageService.instance.channels.count
     }
 }

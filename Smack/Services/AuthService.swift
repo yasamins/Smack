@@ -156,6 +156,7 @@ class AuthService {
         ]
     
         Alamofire.request("\(URL_USER_BY_EMAIL)\(userEmail)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+            //if the response rrsult is nil we gonna extract those data
             if response.result.error == nil {
                 guard let data = response.data else {return}
                 let json = JSON(data: data)
