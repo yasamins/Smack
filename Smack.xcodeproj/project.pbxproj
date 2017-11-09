@@ -30,6 +30,7 @@
 		53AD2FDF1FAF8D38001BA37F /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD2FDE1FAF8D38001BA37F /* ChannelCell.swift */; };
 		53AD2FE21FB439F3001BA37F /* AddChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD2FE01FB439F3001BA37F /* AddChannelVC.swift */; };
 		53AD2FE31FB439F3001BA37F /* AddChannelVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53AD2FE11FB439F3001BA37F /* AddChannelVC.xib */; };
+		53AD2FE51FB45BFA001BA37F /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD2FE41FB45BFA001BA37F /* SocketService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		53AD2FDE1FAF8D38001BA37F /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		53AD2FE01FB439F3001BA37F /* AddChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelVC.swift; sourceTree = "<group>"; };
 		53AD2FE11FB439F3001BA37F /* AddChannelVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChannelVC.xib; sourceTree = "<group>"; };
+		53AD2FE41FB45BFA001BA37F /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		53C179B81F6D5C27007E642C /* Smack-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smack-Bridging-Header.h"; sourceTree = "<group>"; };
 		E4BD4B95FE63FC2E72658B50 /* Pods-Smack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smack/Pods-Smack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +84,7 @@
 				533F61251F765932000F601F /* AuthService.swift */,
 				537F9D071F8A5C620061480E /* UserDataService.swift */,
 				53AD2FDA1FAF2FE4001BA37F /* MessageService.swift */,
+				53AD2FE41FB45BFA001BA37F /* SocketService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				537686181F6D62B500C0F5C0 /* GradientView.swift in Sources */,
 				53749B871F6B0D3A00D27430 /* AppDelegate.swift in Sources */,
 				5376861B1F6D84B100C0F5C0 /* Constants.swift in Sources */,
+				53AD2FE51FB45BFA001BA37F /* SocketService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
