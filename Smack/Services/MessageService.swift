@@ -15,6 +15,7 @@ class MessageService {
     static let instance = MessageService()
     
     var channels = [Channel]()
+    var selectedChannel : Channel?
     
     //we gonna make the function that is going to have our web request and bring back all our channels for us
     func findAllChannel(completion: @escaping CompletionHandler) {
@@ -50,6 +51,10 @@ class MessageService {
             
         }
         
+    }
+    //after user log out the channels will be  removed
+    func clearChannels() {
+        channels.removeAll()
     }
     
 }

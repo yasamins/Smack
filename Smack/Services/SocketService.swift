@@ -29,9 +29,10 @@ class SocketService: NSObject {
     }
     func addChannel(channelName: String, channelDescription: String, completion: @escaping CompletionHandler) {
         //emit from app to the api with these info (name, description)
-        socket.emitWithAck("newChannel", channelName, channelDescription)
+        socket.emit("newChannel", channelName, channelDescription)
         completion(true)
         
+    }
         //receive the info from the api after creating the channel and save it in db and send us back name, desc, id, api emits
         func getChannel(completion: @escaping CompletionHandler) {
             socket.on("channelCreated") { (dataArray, ack) in
@@ -45,17 +46,9 @@ class SocketService: NSObject {
                     , id: channelId)
                 MessageService.instance.channels.append(newChannel)
                 completion(true)
-
-                
                 
                 
                 }
             
         }
     }
-    
-    
-    
-    
-    
-}

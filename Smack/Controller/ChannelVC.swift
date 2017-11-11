@@ -31,18 +31,34 @@ class ChannelVC: UIViewController, UITableViewDelegate,
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
         //we are listening for the notification in createaccountVC
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-
+        SocketService.instance.getChannel { (success) in
+            if success {
+                
+                self.tableView.reloadData()
+                
+            }
+            
+        }
     }
 
     @IBAction func addChannelPressed(_ sender: Any) {
-        let addChannel = AddChannelVC()
-        addChannel.modalPresentationStyle = .custom
-        present(addChannel, animated: true, completion: nil)
+        //user can add channel only if they are logged in
+        if AuthService.instance.isLoggedIn {
+            let addChannel = AddChannelVC()
+            addChannel.modalPresentationStyle = .custom
+            present(addChannel, animated: true, completion: nil)
     }
-    
+    }
     @IBAction func loginBtnPressed(_ sender: Any) {
+        if AuthService.instance.isLoggedIn {
+            //show profile page
+            let profile = ProfileVC()
+            profile.modalPresentationStyle = .custom
+            present(profile, animated: true, completion: nil)
+        } else {
         //after pressing the login button we wanna segue to the login vc
         performSegue(withIdentifier: TO_LOGIN, sender: nil)
+    }
     }
     //this func is gonna be called everytime we receive the notification
     @objc func userDataDidChange(_ notif: Notification) {
@@ -54,6 +70,7 @@ class ChannelVC: UIViewController, UITableViewDelegate,
         } else {
             loginBtn.setTitle("Login", for: .normal)
             userImg.image = UIImage(named: "menuProfileIcon")
+            tableView.reloadData()
         }
         
     }
