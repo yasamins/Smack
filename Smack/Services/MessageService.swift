@@ -41,6 +41,7 @@ class MessageService {
                         //now we gonna add our new channel to our channels array
                         self.channels.append(channel)
                     }
+                    NotificationCenter.default.post(name: NOTIF_CHANNELS_LOADED, object: nil)
                     completion(true)
                 }
                 

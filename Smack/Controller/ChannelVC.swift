@@ -31,6 +31,9 @@ class ChannelVC: UIViewController, UITableViewDelegate,
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
         //we are listening for the notification in createaccountVC
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.channelsLoaded(_:)), name: NOTIF_CHANNELS_LOADED, object: nil)
+        
+        
         SocketService.instance.getChannel { (success) in
             if success {
                 
@@ -74,6 +77,13 @@ class ChannelVC: UIViewController, UITableViewDelegate,
         }
         
     }
+    
+    @objc func channelsLoaded(_ notif: Notification) {
+        tableView.reloadData()
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath:
         IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as? ChannelCell {
@@ -90,5 +100,13 @@ class ChannelVC: UIViewController, UITableViewDelegate,
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MessageService.instance.channels.count
+    }
+    //select the channel and then shoot off a notification that we selected the channel
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let channel = MessageService.instance.channels[indexPath.row]
+        MessageService.instance.selectedChannel = channel
+        NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
+        //make the menu slide back
+        self.revealViewController().revealToggle(animated: true)
     }
 }

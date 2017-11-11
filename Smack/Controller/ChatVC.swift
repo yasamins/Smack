@@ -28,11 +28,14 @@ class ChatVC: UIViewController {
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSeleceted(_notif:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
 
         // if we are logged in
         if AuthService.instance.isLoggedIn {
             AuthService.instance.findUserByEmail(completion: { (success) in
                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                
             })
         }
     }
@@ -49,9 +52,19 @@ class ChatVC: UIViewController {
         
     }
     
+    @objc func channelSeleceted(_notif: Notification) {
+        updateWithChannel()
+    }
+    func updateWithChannel() {
+        //update the label to the name of the selected channel
+        let channelName = MessageService.instance.selectedChannel?.channelTitle ?? ""
+        channelNameLbl.text = "#\(channelName)"
+    }
     func onLoginGetMessages() {
         MessageService.instance.findAllChannel { (success) in
-            //do stuff with channels
+            if success {
+                //do stuff with channels
+            }
         }
     }
 
