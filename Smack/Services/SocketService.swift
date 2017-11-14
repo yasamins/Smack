@@ -59,4 +59,31 @@ class SocketService: NSObject {
         completion(true)
         
     }
+    //receive that array of data that we have above
+    func getChatMessage(completion: @escaping CompletionHandler) {
+        //check if the channelId of the incoming messages matches the channelId that we are in
+        //if yes we get the array and parse it
+        socket.on("messageCreated") { (dataArray, ack) in
+            guard let msgBody = dataArray[0] as? String else { return }
+            guard let channelId = dataArray[2] as? String else { return }
+            guard let userName = dataArray[3] as? String else { return }
+            guard let userAvatar = dataArray[4] as? String else { return }
+            guard let id = dataArray[6] as? String else { return }
+            guard let timeStamp = dataArray[7] as? String else { return }
+            
+            if channelId == MessageService.instance.selectedChannel?.id &&
+                AuthService.instance.isLoggedIn {
+                
+                let newMessage = Message(message: msgBody, userName: userName, channelId: channelId,
+                                         userAvatar: userAvatar, id: id, timestamp: timeStamp)
+                //add to the asrray of messages and in chatCV we reload the table
+                MessageService.instance.messages.append(newMessage)
+                completion(true)
+            } else {
+                completion(false)
+            }
+
+
+        }
+    }
 }
